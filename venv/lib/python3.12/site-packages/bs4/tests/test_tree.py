@@ -66,6 +66,10 @@ class TestFind(SoupTest):
         assert "div" == soup.find("p").find_previous_sibling().name
         assert "p" == soup.find("div").find_next_sibling().name
 
+    def test_find_with_function_can_only_find_tags(self):
+        soup = self.soup("text<div>text</div>text<p>text</p>")
+        assert "p" == soup.find(lambda t: t.name=="p").name
+        assert None == soup.find(lambda t: t=="text")
 
 class TestFindAll(SoupTest):
     """Basic tests of the find_all() method."""

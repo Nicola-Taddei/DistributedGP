@@ -431,10 +431,23 @@ class HTMLTreeBuilderSmokeTest(TreeBuilderSmokeTest):
         # Pickling a tree, then unpickling it, yields a tree identical
         # to the original.
         tree = self.soup("<a><b>foo</a>")
-        dumped = pickle.dumps(tree, 2)
+        dumped = pickle.dumps(tree, pickle.HIGHEST_PROTOCOL)
         loaded = pickle.loads(dumped)
         assert loaded.__class__ == BeautifulSoup
         assert loaded.decode() == tree.decode()
+
+    def test_pickle_and_unpickle_bad_markup(self):
+        markup = """
+<!DOCTYPE html>
+<html lang="en">
+<head><title>blabla</title></head>
+<body><?xml encoding="utf-8" ?><html></html></body>
+</html>
+"""
+        soup = self.soup(markup)
+        pickled = pickle.dumps(soup, pickle.HIGHEST_PROTOCOL)
+        soup = pickle.loads(pickled)
+        assert soup.builder.is_xml is False
 
     def assertDoctypeHandled(self, doctype_fragment: str) -> None:
         """Assert that a given doctype string is handled correctly."""

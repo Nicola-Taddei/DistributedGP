@@ -35,7 +35,7 @@ DistKP uses a **state-space GP representation** to model the time-varying behavi
 
 ```bash
 git clone https://github.com/Nicola-Taddei/DistributedGP.git
-cd DistKP
+cd DistributedGP
 ```
 
 
@@ -99,5 +99,5 @@ If you find this repository useful in your research, please cite our paper:
 Contributions are welcome! Whether it's fixing typos, improving documentation, or extending the code – feel free to open a pull request or reach out.
 ### 📬 Contact
 
-For questions or feedback, you can reach us at: [taddein@ethz.ch], [rmaggioni@ethz.ch]
+For questions or feedback, you can reach us at: [*taddein@ethz.ch*] and [*rmaggioni@ethz.ch*]
 

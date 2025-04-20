@@ -582,8 +582,12 @@ class SoupStrainer(ElementFilter):
                 #     [f"{k}={v}" for k, v in sorted(tag.attrs.items())]
                 # )
                 # print(f"Testing <{tag.name} {attrs}>{tag.string}</{tag.name}> against {rule}")
+
+                # If the rule contains a function, the function will be called
+                # with `tag`. It will not be called a second time with
+                # `prefixed_name`.
                 if rule.matches_tag(tag) or (
-                    prefixed_name is not None and rule.matches_string(prefixed_name)
+                        not rule.function and prefixed_name is not None and rule.matches_string(prefixed_name)
                 ):
                     name_matches = True
                     break

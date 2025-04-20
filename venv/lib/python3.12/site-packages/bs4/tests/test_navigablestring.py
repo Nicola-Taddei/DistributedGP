@@ -57,6 +57,17 @@ class TestNavigableString(SoupTest):
         with pytest.raises(AttributeError):
             string.name = "foo"
 
+    def test_string_detects_attribute_access_attempt(self):
+        string = self.soup("the string").string
+
+        # Try to access an HTML attribute of a NavigableString and get a helpful exception.
+        with pytest.raises(TypeError) as e:
+            string["attr"]
+        assert str(e.value) == "string indices must be integers, not 'str'. Are you treating a NavigableString like a Tag?"
+
+        # Normal string access works.
+        assert string[2] == "e"
+        assert string[2:5] == "e s"
 
 class TestNavigableStringSubclasses(SoupTest):
     def test_cdata(self):

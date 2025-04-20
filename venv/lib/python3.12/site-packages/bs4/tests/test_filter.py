@@ -264,6 +264,15 @@ class TestTagNameMatchRule(SoupTest):
         tag = Tag(**tag_kwargs)
         assert rule.matches_tag(tag) == result
 
+    def test_matches_tag_only_passes_tag_to_function(self):
+        def arg1_must_be_tag(t):
+            if not isinstance(t, Tag):
+                raise ValueError("Non-tag passed into tag name match rule function")
+            return True
+
+        rule = TagNameMatchRule(function=arg1_must_be_tag)
+        assert rule.matches_tag(Tag(name="tagname")) is True
+
 
 # AttributeValueMatchRule and StringMatchRule have the same
 # logic as MatchRule.
