@@ -57,18 +57,13 @@ jupyter notebook notebooks/
 ```
 DistKP/
 ├── notebooks/           # Jupyter notebooks with step-by-step explanations and experiments
-├── src/                 # Core DistKP implementation
-│   ├── models/          # GP model, kernel, Kalman filter logic
-│   └── utils/           # Utilities for simulation, visualization, etc.
-├── data/                # (Optional) Synthetic datasets or environment definitions
 ├── requirements.txt     # Minimal dependencies
 └── README.md
 ```
 
-We provide three notebooks:
+We provide two notebooks:
 1. **01_introduction.ipynb**: a minimal version of the algorithm.
 2. **02_experiments.ipynb**: reproduces the results from the paper.
-3. **03_additional_sym.ipynb**: provides additonal simulations.
 
 
 ## 📊 Reproducing the Results
