@@ -1,5 +1,5 @@
 # Virtual environment
-./venv
+venv/
 
 # Jupyter chackpoints
 notebooks/.ipynb_checkpoints
