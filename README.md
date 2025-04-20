@@ -2,8 +2,8 @@
 
 This repository provides a clean and well-documented Python implementation of **DistKP**, a distributed algorithm for **time-varying Gaussian process regression**, as introduced in our paper:
 
-> **"Distributed Time-Varying Gaussian Regression via Kalman Filtering"**  
-> [Author(s)]  
+> **Distributed Time-Varying Gaussian Regression via Kalman Filtering**  
+> *Nicola Taddei, Riccardo Maggioni, Jaap Eising, Giulia De Pasquale, Dörfler Florian*  
 > [[Link to paper if available]]
 
 The implementation is designed to be **accessible, educational, and extensible**, with simulations and detailed explanations provided via **Jupyter notebooks**.
@@ -34,7 +34,7 @@ DistKP uses a **state-space GP representation** to model the time-varying behavi
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Nicola-Taddei/DistKP.git
+git clone https://github.com/Nicola-Taddei/DistributedGP.git
 cd DistKP
 ```
 
@@ -99,5 +99,5 @@ If you find this repository useful in your research, please cite our paper:
 Contributions are welcome! Whether it's fixing typos, improving documentation, or extending the code – feel free to open a pull request or reach out.
 ### 📬 Contact
 
-For questions or feedback, you can reach us at: [your.email@domain.com]
+For questions or feedback, you can reach us at: [taddein@ethz.ch], [rmaggioni@ethz.ch]
 
