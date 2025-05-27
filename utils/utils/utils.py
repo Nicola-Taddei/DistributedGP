@@ -38,6 +38,7 @@ def plot_field(
 # Normalize so that:
 # -1 → blue (low),  0 → white (mid),  1 → red (high)
 norm = mcolors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1)
+var_norm = mcolors.TwoSlopeNorm(vmin=0, vcenter=0.5, vmax=1)
 levels=100
 cmap = 'coolwarm'
 var_cmap = 'OrRd'
@@ -54,13 +55,7 @@ def plot_var_free(
         z,
         title,
         drone_pos):
-    # Find mean and std of z
-    mean = np.mean(z)
-    std = np.std(z)
-
-    #limit = mean + 2*std
     limit = np.max(z)
-    norm = mcolors.TwoSlopeNorm(vmin=-limit, vcenter=0, vmax=limit)
     plot_field(
         ax,
         x,
@@ -68,7 +63,7 @@ def plot_var_free(
         z,
         title,
         cmap=var_cmap,
-        norm=norm,
+        norm=mcolors.TwoSlopeNorm(vmin=0, vcenter=limit/2, vmax=limit),
         levels=levels,
         pos_ticks=pos_ticks,
         ticks=[0,limit],
@@ -93,7 +88,7 @@ plot_mean = partial(
 plot_var = partial(
     plot_field,
     cmap=var_cmap,
-    norm=norm,
+    norm=var_norm,
     levels=levels,
     pos_ticks=pos_ticks,
     ticks=var_ticks,
