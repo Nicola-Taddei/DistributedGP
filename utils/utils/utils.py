@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 from functools import partial
+import numpy as np
 
 def plot_field(
         ax,
@@ -45,6 +46,37 @@ font_size = 14
 pos_ticks = [0, 100]
 pred_ticks = [-1, 0, +1]
 var_ticks = [0, +1]
+
+def plot_var_free(
+        ax,
+        x,
+        y,
+        z,
+        title,
+        drone_pos):
+    # Find mean and std of z
+    mean = np.mean(z)
+    std = np.std(z)
+
+    #limit = mean + 2*std
+    limit = np.max(z)
+    norm = mcolors.TwoSlopeNorm(vmin=-limit, vcenter=0, vmax=limit)
+    plot_field(
+        ax,
+        x,
+        y,
+        z,
+        title,
+        cmap=var_cmap,
+        norm=norm,
+        levels=levels,
+        pos_ticks=pos_ticks,
+        ticks=[0,limit],
+        extend='max',
+        drone_pos=drone_pos,
+        drone_color=drone_color,
+        font_size=font_size
+    )
 
 plot_mean = partial(
     plot_field,
