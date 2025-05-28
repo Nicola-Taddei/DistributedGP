@@ -55,11 +55,11 @@ def plot_field(
 # -1 → blue (low),  0 → white (mid),  1 → red (high)
 norm = mcolors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1)
 var_norm = mcolors.TwoSlopeNorm(vmin=0, vcenter=0.5, vmax=1)
-levels=300
+levels=50
 cmap = 'coolwarm'
 var_cmap = 'OrRd'
 drone_color = 'yellow'
-font_size = 14
+font_size = 20
 pos_ticks = [0, 100]
 pred_ticks = [-1, 0, +1]
 var_ticks = [0, +1]
