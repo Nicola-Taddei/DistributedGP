@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
+import matplotlib.ticker as ticker
 from functools import partial
 import numpy as np
 
@@ -9,24 +10,27 @@ def plot_field(
         x,
         y,
         z,
-        title,
         cmap,
         norm,
         levels,
         pos_ticks,
         ticks,
         extend,
-        drone_pos,
         drone_color,
-        font_size):
+        font_size,
+        title=None,
+        drone_pos=None):
     im = ax.contourf(x, y, z, cmap=cmap, norm=norm, levels=levels)
-    ax.scatter(*drone_pos, c=drone_color)
+    if drone_pos is not None:
+        ax.scatter(*drone_pos, c=drone_color)
     sm = cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array([])
     cbar = plt.colorbar(sm, extend=extend, ax=ax)
+    cbar.formatter = ticker.FormatStrFormatter('%.2f')
     cbar.set_ticks(ticks)
     cbar.ax.tick_params(labelsize=font_size)
-    ax.set_title(title, fontsize=font_size)
+    if title is not None:
+        ax.set_title(title, fontsize=font_size)
     ax.set_xlabel("x", fontsize=font_size)
     ax.set_ylabel("y", fontsize=font_size)
     ax.set_xticks(pos_ticks)
@@ -53,24 +57,24 @@ def plot_var_free(
         x,
         y,
         z,
-        title,
-        drone_pos):
+        title=None,
+        drone_pos=None):
     limit = np.max(z)
     plot_field(
         ax,
         x,
         y,
         z,
-        title,
+        title=title,
         cmap=var_cmap,
         norm=mcolors.TwoSlopeNorm(vmin=0, vcenter=limit/2, vmax=limit),
         levels=levels,
         pos_ticks=pos_ticks,
         ticks=[0,limit],
         extend='max',
-        drone_pos=drone_pos,
         drone_color=drone_color,
-        font_size=font_size
+        font_size=font_size,
+        drone_pos=drone_pos
     )
 
 plot_mean = partial(
