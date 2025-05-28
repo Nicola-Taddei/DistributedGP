@@ -3,3 +3,7 @@ venv/
 
 # Jupyter checkpoints
 notebooks/.ipynb_checkpoints
+
+# Utils pycache
+utils/utils/__pycache__
+utils/utils.egg-info
