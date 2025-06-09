@@ -4,7 +4,7 @@ This repository provides a clean and well-documented Python implementation of **
 
 > **Distributed Time-Varying Gaussian Regression via Kalman Filtering**  
 > *Nicola Taddei, Riccardo Maggioni, Jaap Eising, Giulia De Pasquale, Dörfler Florian*  
-> [[Link to paper if available]]
+> [paper link](https://arxiv.org/abs/2504.14900)
 
 The implementation is designed to be **accessible, educational, and extensible**, with simulations and detailed explanations provided via **Jupyter notebooks**.
 
@@ -86,11 +86,14 @@ DistKP is ideal for roboticists working with:
 If you find this repository useful in your research, please cite our paper:
 
 ```
-@article{yourbibkey2025,
-  title={Distributed Time-Varying Gaussian Regression via Kalman Filtering},
-  author={Your Name and Coauthor Name},
-  journal={...},
-  year={2025}
+@misc{taddei2025distributedtimevaryinggaussianregression,
+      title={Distributed Time-Varying Gaussian Regression via Kalman Filtering}, 
+      author={Nicola Taddei and Riccardo Maggioni and Jaap Eising and Giulia De Pasquale and Florian Dorfler},
+      year={2025},
+      eprint={2504.14900},
+      archivePrefix={arXiv},
+      primaryClass={eess.SY},
+      url={https://arxiv.org/abs/2504.14900}, 
 }
 ```
 
